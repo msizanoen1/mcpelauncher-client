@@ -11,6 +11,7 @@ void CorePatches::install(void *handle) {
     // PatchUtils::patchCallInstruction(ptr, (void*) +[]() { return true; }, true);
 
     void * appPlatform = linker::dlsym(handle, "_ZTV21AppPlatform_android23");
+    if(!appPlatform) appPlatform = linker::dlsym(handle, "_ZTV11AppPlatform");
     if(appPlatform) {
         void** vta = &((void**) appPlatform)[2];
         PatchUtils::VtableReplaceHelper vtr (handle, vta, vta);
