@@ -13,4 +13,7 @@ public:
 
     static void setGameWindow(std::shared_ptr<GameWindow> gameWindow);
 
+    static void hideMousePointer();
+
+    static void showMousePointer();
 };
